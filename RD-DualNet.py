@@ -108,7 +108,7 @@ class LightweightMultiScaleBlock(nn.Module):
         self.conv3 = DepthwiseSeparableConv(channels, channels, 7)
         self.se = SEBlock(channels * 3)
         self.fusion = nn.Conv2d(channels * 3, channels, 1)
-        self.attention = RetinexDCPGuidedAttention(3, channels)
+        self.attention = RetinexDCPGuidedAttention(channels, channels)
         
     def forward(self, x, orig_input):
         feat1 = self.conv1(x)
